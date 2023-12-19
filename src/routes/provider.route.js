@@ -5,8 +5,8 @@ const providerRouter = Router()
 
 providerRouter.get("/", getProviders);
 providerRouter.get("/:id", getProvider);
-providerRouter.get("/", createProvider);
-providerRouter.get("/:id", updateProvider);
-providerRouter.get("/:id", deleteProvider);
+providerRouter.post("/", createProvider);
+providerRouter.put("/:id", updateProvider);
+providerRouter.delete("/:id", deleteProvider);
 
 export default providerRouter;

@@ -23,7 +23,7 @@ export const getProvider = (id) => {
 //Create Provider Method
 export const createProvider = (provider) => {
     return new Promise((resolve, reject) => {
-        const query = "INSERT INTO proveedor (razon_social, nombre, telefono)";
+        const query = "INSERT INTO proveedor (razon_social, nombre, telefono) VALUES (?, ?, ?)";
         const {business, name, phone} = provider;
         db.execute(query, [business, name, phone])
             .then((result) => resolve(result))
