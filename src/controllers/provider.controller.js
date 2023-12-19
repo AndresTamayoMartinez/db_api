@@ -41,6 +41,7 @@ export const createProvider = (req, res) => {
         });
 };
 
+//Update Provider Method
 export const updateProvider = (req, res) => {
     const { id } = req.params;
     const provider = req.body;
@@ -55,6 +56,7 @@ export const updateProvider = (req, res) => {
         });
 };
 
+//Delete Provider Method
 export const deleteProvider = (req, res) => {
     const { id } = req.params;
     providerServices.deleteProvider(id)
