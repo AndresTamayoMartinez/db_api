@@ -33,7 +33,7 @@ export const createProvider = (provider) => {
 
 export const updateProvider = (id, provider) => {
     return new Promise((resolve, reject) => {
-        const query = "UPDATE proveedor SET razon_social = ?, nombre = ?, phone = ? WHERE id = ?";
+        const query = "UPDATE proveedor SET razon_social = ?, nombre = ?, telefono = ? WHERE id = ?";
         const {business, name, phone} = provider;
         db.execute(query, [business, name, phone, id])
             .then((result) => resolve(result))
@@ -43,7 +43,7 @@ export const updateProvider = (id, provider) => {
 
 export const deleteProvider = (id) => {
     return new Promise((resolve, reject) => {
-        const query = "DELETE FROM provider WHERE id = ?";
+        const query = "DELETE FROM proveedor WHERE id = ?";
         db.execute(query, [id])
             .then((result) => resolve(result))
             .catch((err) => reject(err));
