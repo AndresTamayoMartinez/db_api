@@ -1,6 +1,7 @@
 import { Router } from "express";
 import providerRouter from "./provider.route.js";
 import categoryRouter from "./category.route.js";
+import brandRouter from "./brand.route.js";
 
 const indexRouter = Router();
 const prefix = "/api";
@@ -14,5 +15,7 @@ indexRouter.get(prefix, (req, res) => {
 indexRouter.use(`${prefix}/provider`, providerRouter);
 //Category Route
 indexRouter.use(`${prefix}/category`, categoryRouter);
+//Brand Route
+indexRouter.use(`${prefix}/brand`, brandRouter);
 
 export default indexRouter;
