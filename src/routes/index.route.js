@@ -5,6 +5,7 @@ import brandRouter from "./brand.route.js";
 import employeeRouter from "./employee.route.js";
 import clientRouter from "./client.route.js";
 import presentationRouter from "./presentation.route.js";
+import productRouter from "./product.route.js";
 
 const indexRouter = Router();
 const prefix = "/api";
@@ -26,5 +27,7 @@ indexRouter.use(`${prefix}/employee`, employeeRouter);
 indexRouter.use(`${prefix}/client`, clientRouter);
 //Presentation Route
 indexRouter.use(`${prefix}/presentation`, presentationRouter);
+//Product Route
+indexRouter.use(`${prefix}/product`, productRouter);
 
 export default indexRouter;
