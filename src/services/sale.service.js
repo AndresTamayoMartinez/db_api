@@ -23,9 +23,9 @@ export const getSale = (id) => {
 //Create Sale Method
 export const createSale = (sale) => {
     return new Promise((resolve, reject) => {
-        const query = "INSERT INTO venta (fecha, pagado, entregado, id_cliente, id_empleado) VALUES (?, ?, ?, ?, ?)";
-        const {date, paid, delivered, id_client, id_employee} = sale;
-        db.execute(query, [date, paid, delivered, id_client, id_employee])
+        const query = "INSERT INTO venta (fecha, pagado, entregado, id_cliente, id_empleado, subtotal, abono, total) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        const {date, paid, delivered, id_client, id_employee, subtotal, abono, total} = sale;
+        db.execute(query, [date, paid, delivered, id_client, id_employee, subtotal, abono, total])
             .then((result) => resolve(result))
             .catch((err) => reject(err));
     });
@@ -34,9 +34,9 @@ export const createSale = (sale) => {
 //Update Sale Method
 export const updateSale = (id, sale) => {
     return new Promise((resolve, reject) => {
-        const query = "UPDATE venta SET fecha = ?, pagado = ?, entregado = ?, id_cliente = ?, id_empleado = ? WHERE id = ?";
-        const {date, paid, delivered, id_client, id_employee} = sale;
-        db.execute(query, [date, paid, delivered, id_client, id_employee, id])
+        const query = "UPDATE venta SET fecha = ?, pagado = ?, entregado = ?, id_cliente = ?, id_empleado = ?, subtotal = ?, abono = ?, total = ? WHERE id = ?";
+        const {date, paid, delivered, id_client, id_employee, subtotal, abono, total} = sale;
+        db.execute(query, [date, paid, delivered, id_client, id_employee, subtotal, abono, total, id])
             .then((result) => resolve(result))
             .catch((err) => reject(err));
     });
