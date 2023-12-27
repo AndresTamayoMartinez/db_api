@@ -10,6 +10,7 @@ import brandProviderRouter from "./brans_provider.routes.js";
 import entranceRouter from "./entrances.route.js";
 import saleRouter from "./sale.route.js";
 import saleDetailRouter from "./sale_detail.route.js";
+import entranceDetailRouter from "./entrance_detail.routes.js";
 
 const indexRouter = Router();
 const prefix = "/api";
@@ -41,5 +42,7 @@ indexRouter.use(`${prefix}/entrance`, entranceRouter);
 indexRouter.use(`${prefix}/sale`, saleRouter);
 //Sale_Detail Route
 indexRouter.use(`${prefix}/sale_detail`, saleDetailRouter);
+//Entrance_Detail Route
+indexRouter.use(`${prefix}/entrance_detail`, entranceDetailRouter);
 
 export default indexRouter;
