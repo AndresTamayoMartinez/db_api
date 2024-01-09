@@ -5,24 +5,24 @@ import * as employeeServices from "../services/login.service.js"
 const jwt = jsonwebtoken;
 const loginRouter = Router()
 
-loginRouter.get('/', (req, res) => {
-    res.send(`
-        <html>
-            <head>
-                <tittle>Login</tittle>
-            </head>
-            <body>
-                <form method="POST" action="/login/auth">
-                    <p>Nombre de usuario</P>
-                    <input type="text" name="username">
-                    <p>Contraseña</P>
-                    <input type:"password" name="password">
-                    <input type="submit" value="Iniciar Sesion">
-                </form>
-            </body>
-        </html>
-    `)
-});
+// loginRouter.get('/', (req, res) => {
+//     res.send(`
+//         <html>
+//             <head>
+//                 <tittle>Login</tittle>
+//             </head>
+//             <body>
+//                 <form method="POST" action="/login/auth">
+//                     <p>Nombre de usuario</P>
+//                     <input type="text" name="username">
+//                     <p>Contraseña</P>
+//                     <input type:"password" name="password">
+//                     <input type="submit" value="Iniciar Sesion">
+//                 </form>
+//             </body>
+//         </html>
+//     `)
+// });
 
 loginRouter.post('/auth', (req, res) => {
     const {username, password} = req.body;
@@ -33,13 +33,17 @@ loginRouter.post('/auth', (req, res) => {
             const user = {id: id, name: nombre, username};
             const accessToken = generateAccessToken(user);
             res.header('authorization', accessToken).json({
-                    message: 'Usuario autentificado',
-                    token: accessToken,
-                    data: result[0]
+                    0:{
+                        message: 'Usuario autentificado',
+                        token: accessToken,
+                        data: result[0]
+                    }
             });
         } else(
             res.status(200).json({
-                message: "Usuario o contraseña incorrectos"
+                0:{
+                    message: "Usuario o contraseña incorrectos"
+                }
             })
         )
     }).catch((err) => {

@@ -1,7 +1,7 @@
 import express from "express";
-import jsonwebtoken from "jsonwebtoken";
 import db from "./config/db.js";
 import indexRouter from "./routes/index.route.js";
+import cors from "cors";
 
 const app = express();
 
@@ -10,6 +10,7 @@ app.set("port", process.env.PORT || 3000);
 //middleware
 app.use(express.urlencoded({extended: false}));
 app.use(express.json());
+app.use(cors());
 
 //Routes
 app.use("/", indexRouter);
