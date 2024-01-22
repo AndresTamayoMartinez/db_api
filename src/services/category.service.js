@@ -3,7 +3,7 @@ import db from "../config/db.js";
 //Get Categories Method
 export const getCategories = () => {
     return new Promise((resolve, reject) => {
-        const query = "SELECT * FROM categoria";
+        const query = "SELECT * FROM categoria ORDER BY nombre ASC";
         db.execute(query)
             .then((result) => resolve(result))
             .catch((err) => reject(err));

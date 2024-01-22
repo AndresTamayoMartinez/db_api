@@ -13,7 +13,7 @@ export const getPresentations = () => {
 //Get Presentation Method
 export const getPresentation = (id) => {
     return new Promise((resolve, reject) => {
-        const query = "SELECT * FROM presentacion WHERE id = ?";
+        const query = "SELECT * FROM presentacion WHERE id_categoria = ?";
         db.execute(query, [id])
             .then((result) => resolve(result))
             .catch((err) => reject(err));
