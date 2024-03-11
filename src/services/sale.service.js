@@ -3,17 +3,24 @@ import db from "../config/db.js";
 //Get Sales Method
 export const getSales = () => {
     return new Promise((resolve, reject) => {
-        const query = "SELECT * FROM venta";
+        const query = `select v.id, v.fecha, c.nombre as nombre_cliente, e.nombre as nombre_empleado, v.pagado, v.entregado, v.subtotal, v.abono, v.total
+                        from venta as v
+                        inner join cliente as c on c.id = v.id_cliente
+                        inner join empleado as e on e.id = v.id_empleado;`;
         db.execute(query)
             .then((result) => resolve(result))
             .catch((err) => reject(err));
     });
 };
 
-//Get Sale Method
+//Get Sale by ID Method
 export const getSale = (id) => {
     return new Promise((resolve, reject) => {
-        const query = "SELECT * FROM venta WHERE id = ?";
+        const query = `select v.id as id, v.fecha as fecha, c.id as id_cliente, e.id as id_empleado, v.pagado as pagado, v.entregado as entregado, v.subtotal as subtotal, v.abono as abono, v.total as total
+                        from venta as v
+                        inner join cliente as c on c.id = v.id_cliente
+                        inner join empleado as e on e.id = v.id_empleado
+                        WHERE v.id = ?;`;
         db.execute(query, [id])
             .then((result) => resolve(result))
             .catch((err) => reject(err));
