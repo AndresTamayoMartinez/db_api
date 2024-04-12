@@ -3,7 +3,7 @@ import { getSaleDetails, getSaleDetail, createSaleDetail, updateSaleDetail, dele
 
 const saleDetailRouter = Router()
 
-saleDetailRouter.get("/", getSaleDetails);
+saleDetailRouter.get("/:id_sale", getSaleDetails);
 saleDetailRouter.get("/:id_sales/:id_products", getSaleDetail);
 saleDetailRouter.post("/", createSaleDetail);
 saleDetailRouter.put("/:id_sales/:id_products", updateSaleDetail);

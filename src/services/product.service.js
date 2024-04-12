@@ -52,6 +52,17 @@ export const updateProduct = (id, product) => {
     });
 };
 
+//Update Product Method
+export const updateStock = (id, Stock) => {
+    return new Promise((resolve, reject) => {
+        const query = "UPDATE producto SET stock = stock + ? WHERE id = ?";
+        const {stock} = Stock;
+        db.execute(query, [stock, id])
+            .then((result) => resolve(result))
+            .catch((err) => reject(err));
+    });
+};
+
 //Delete Product Method
 export const deleteProduct = (id) => {
     return new Promise((resolve, reject) => {

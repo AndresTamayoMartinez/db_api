@@ -33,7 +33,10 @@ export const createSale = (sale) => {
         const query = "INSERT INTO venta (fecha, pagado, entregado, id_cliente, id_empleado, subtotal, abono, total) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         const {date, paid, delivered, id_client, id_employee, subtotal, abono, total} = sale;
         db.execute(query, [date, paid, delivered, id_client, id_employee, subtotal, abono, total])
-            .then((result) => resolve(result))
+            .then((result) => {
+                const insertedId = result[0].insertId;
+                resolve(insertedId);
+            })
             .catch((err) => reject(err));
     });
 };
@@ -49,10 +52,31 @@ export const updateSale = (id, sale) => {
     });
 };
 
+//Update Sale-Subtotal Method
+export const updateSaleSubtotal = (id, sale) => {
+    return new Promise((resolve, reject) => {
+        const query = "UPDATE venta SET subtotal = ?, abono = ?, total = ? WHERE id = ?";
+        const {subtotal, abono, total} = sale;
+        db.execute(query, [subtotal, abono, total, id])
+            .then((result) => resolve(result))
+            .catch((err) => reject(err));
+    });
+};
+
 //Delete Sale Method
 export const deleteSale = (id) => {
     return new Promise((resolve, reject) => {
         const query = "DELETE FROM venta WHERE id = ?";
+        db.execute(query, [id])
+            .then((result) => resolve(result))
+            .catch((err) => reject(err));
+    });
+};
+
+//Delete Sale Method
+export const deleteSalesDetails = (id) => {
+    return new Promise((resolve, reject) => {
+        const query = "DELETE FROM detalle_v WHERE id_venta = ?";
         db.execute(query, [id])
             .then((result) => resolve(result))
             .catch((err) => reject(err));

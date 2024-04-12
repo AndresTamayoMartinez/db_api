@@ -2,7 +2,8 @@ import * as saleDetailServices from "../services/sale_detail.service.js"
 
 //Get SaleDetails Method
 export const getSaleDetails = (req, res) => {
-    saleDetailServices.getSaleDetails()
+    const { id_sale } = req.params;
+    saleDetailServices.getSaleDetails(id_sale)
         .then((result) => {
             res.status(200).json({
                 message: "SaleDetails retievred successfully",

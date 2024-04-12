@@ -31,9 +31,10 @@ export const getSale = (req, res) => {
 export const createSale = (req, res) => {
     const sale = req.body;
     saleService.createSale(sale)
-        .then(() => {
+        .then((resolve) => {
             res.status(200).json({
                 message: "Sale created successfully",
+                id: resolve,
                 data: sale,
             })
         }).catch((err) => {
@@ -56,6 +57,21 @@ export const updateSale = (req, res) => {
         });
 };
 
+//Update Sale Method
+export const updateSaleSubtotal = (req, res) => {
+    const { id } = req.params;
+    const sale = req.body;
+    saleService.updateSaleSubtotal(id, sale)
+        .then(() => {
+            res.status(200).json({
+                message: "SaleSubtotal updated successfully",
+                data: sale,
+            })
+        }).catch((err) => {
+            res.status(500).send(err)
+        });
+};
+
 //Delete Sale Method
 export const deleteSale = (req, res) => {
     const { id } = req.params;
@@ -63,6 +79,19 @@ export const deleteSale = (req, res) => {
         .then(() => {
             res.status(200).json({
                 message: "Sale deleted successfully",
+            })
+        }).catch((err) => {
+            res.status(500).send(err)
+        });
+};
+
+//Delete Sale Method
+export const deleteSalesDetails = (req, res) => {
+    const { id } = req.params;
+    saleService.deleteSalesDetails(id)
+        .then(() => {
+            res.status(200).json({
+                message: "Sale Detail deleted successfully",
             })
         }).catch((err) => {
             res.status(500).send(err)

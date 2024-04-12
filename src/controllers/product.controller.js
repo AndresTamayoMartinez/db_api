@@ -70,6 +70,21 @@ export const updateProduct = (req, res) => {
         });
 };
 
+//Update Product Stock Method
+export const updateStock = (req, res) => {
+    const { id } = req.params;
+    const stock = req.body;
+    productServices.updateStock(id, stock)
+        .then(() => {
+            res.status(200).json({
+                message: "Product updated successfully",
+                data: stock,
+            })
+        }).catch((err) => {
+            res.status(500).send(err)
+        });
+};
+
 //Delete Product Method
 export const deleteProduct = (req, res) => {
     const { id } = req.params;
