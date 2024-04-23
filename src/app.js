@@ -14,9 +14,6 @@ app.use(cors());
 
 //Routes
 app.use("/", indexRouter);
-app.use("*", (req, res) => {
-    res.send("404 - not found")
-});
 
 //Start server
 app.listen(app.get("port"), () => {
