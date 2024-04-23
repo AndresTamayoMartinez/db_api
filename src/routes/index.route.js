@@ -12,6 +12,7 @@ import entranceRouter from "./entrances.route.js";
 import saleRouter from "./sale.route.js";
 import saleDetailRouter from "./sale_detail.route.js";
 import entranceDetailRouter from "./entrance_detail.routes.js";
+import pucharseReceiptRouter from "./pucharse_receipt.route.js"
 import { validateToken } from "./login.route.js";
 
 const indexRouter = Router();
@@ -48,5 +49,7 @@ indexRouter.use(`${prefix}/sale`, validateToken, saleRouter);
 indexRouter.use(`${prefix}/sale_detail`, validateToken, saleDetailRouter);
 //Entrance_Detail Route
 indexRouter.use(`${prefix}/entrance_detail`, validateToken, entranceDetailRouter);
+//Pucharse_Receipt Route
+indexRouter.use(`${prefix}/pucharse_receipt`, validateToken, pucharseReceiptRouter);
 
 export default indexRouter;
