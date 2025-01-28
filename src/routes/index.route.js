@@ -1,16 +1,17 @@
 import { Router } from "express";
+import saleRouter from "./sale.route.js";
+import billRouter from "./bill.orute.js";
 import loginRouter from './login.route.js'
+import brandRouter from "./brand.route.js";
+import clientRouter from "./client.route.js";
+import productRouter from "./product.route.js";
 import providerRouter from "./provider.route.js";
 import categoryRouter from "./category.route.js";
-import brandRouter from "./brand.route.js";
 import employeeRouter from "./employee.route.js";
-import clientRouter from "./client.route.js";
-import presentationRouter from "./presentation.route.js";
-import productRouter from "./product.route.js";
-import brandProviderRouter from "./brans_provider.routes.js";
 import entranceRouter from "./entrances.route.js";
-import saleRouter from "./sale.route.js";
 import saleDetailRouter from "./sale_detail.route.js";
+import presentationRouter from "./presentation.route.js";
+import brandProviderRouter from "./brans_provider.routes.js";
 import entranceDetailRouter from "./entrance_detail.routes.js";
 import pucharseReceiptRouter from "./pucharse_receipt.route.js"
 import { validateToken } from "./login.route.js";
@@ -51,5 +52,7 @@ indexRouter.use(`${prefix}/sale_detail`, validateToken, saleDetailRouter);
 indexRouter.use(`${prefix}/entrance_detail`, validateToken, entranceDetailRouter);
 //Pucharse_Receipt Route
 indexRouter.use(`${prefix}/pucharse_receipt`, validateToken, pucharseReceiptRouter);
+//Bill Route
+indexRouter.use(`${prefix}/bill`, validateToken, billRouter);
 
 export default indexRouter;
