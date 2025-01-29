@@ -10,6 +10,7 @@ import categoryRouter from "./category.route.js";
 import employeeRouter from "./employee.route.js";
 import entranceRouter from "./entrances.route.js";
 import saleDetailRouter from "./sale_detail.route.js";
+import fiscalClientRouter from "./fiscal_client.route.js"
 import presentationRouter from "./presentation.route.js";
 import brandProviderRouter from "./brans_provider.routes.js";
 import entranceDetailRouter from "./entrance_detail.routes.js";
@@ -54,5 +55,6 @@ indexRouter.use(`${prefix}/entrance_detail`, validateToken, entranceDetailRouter
 indexRouter.use(`${prefix}/pucharse_receipt`, validateToken, pucharseReceiptRouter);
 //Bill Route
 indexRouter.use(`${prefix}/bill`, validateToken, billRouter);
-
+//Fiscal_Client Route
+indexRouter.use(`${prefix}/fiscal_client`, validateToken, fiscalClientRouter);
 export default indexRouter;
