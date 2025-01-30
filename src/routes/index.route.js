@@ -1,7 +1,7 @@
 import { Router } from "express";
 import saleRouter from "./sale.route.js";
-import billRouter from "./bill.orute.js";
-import loginRouter from './login.route.js'
+import billRouter from "./bill.route.js";
+import loginRouter from './login.route.js';
 import brandRouter from "./brand.route.js";
 import clientRouter from "./client.route.js";
 import productRouter from "./product.route.js";
@@ -10,11 +10,12 @@ import categoryRouter from "./category.route.js";
 import employeeRouter from "./employee.route.js";
 import entranceRouter from "./entrances.route.js";
 import saleDetailRouter from "./sale_detail.route.js";
-import fiscalClientRouter from "./fiscal_client.route.js"
+import billDetailRouter from "./bill_detail.route.js";
 import presentationRouter from "./presentation.route.js";
+import fiscalClientRouter from "./fiscal_client.route.js";
 import brandProviderRouter from "./brans_provider.routes.js";
 import entranceDetailRouter from "./entrance_detail.routes.js";
-import pucharseReceiptRouter from "./pucharse_receipt.route.js"
+import pucharseReceiptRouter from "./pucharse_receipt.route.js";
 import { validateToken } from "./login.route.js";
 
 const indexRouter = Router();
@@ -57,4 +58,7 @@ indexRouter.use(`${prefix}/pucharse_receipt`, validateToken, pucharseReceiptRout
 indexRouter.use(`${prefix}/bill`, validateToken, billRouter);
 //Fiscal_Client Route
 indexRouter.use(`${prefix}/fiscal_client`, validateToken, fiscalClientRouter);
+//Bill_Detail Route
+indexRouter.use(`${prefix}/bill_detail`, validateToken, billDetailRouter)
+
 export default indexRouter;
