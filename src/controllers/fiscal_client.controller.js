@@ -2,7 +2,7 @@ import * as fiscalClientServices from "../services/fiscal_client.service.js"
 
 //Get Fiscal Clients Method
 export const getFiscalClients = (req, res) => {
-    employeeServices.getFiscalClients()
+    fiscalClientServices.getFiscalClients()
         .then((result) => {
             res.status(200).json({
                 message: "FiscalClients retievred successfully",
@@ -16,7 +16,7 @@ export const getFiscalClients = (req, res) => {
 //Get Fiscal Client Method
 export const getFiscalClient = (req, res) => {
     const { id } = req.params;
-    employeeServices.getFiscalClient(id)
+    fiscalClientServices.getFiscalClient(id)
     .then((result) => {
         res.status(200).json({
             message: "FiscalClient retrieved successfully",
@@ -30,7 +30,7 @@ export const getFiscalClient = (req, res) => {
 //Create Fiscal Client Method
 export const createFiscalClient = (req, res) => {
     const employee = req.body;
-    employeeServices.createFiscalClient(employee)
+    fiscalClientServices.createFiscalClient(employee)
         .then(() => {
             res.status(200).json({
                 message: "FiscalClient created successfully",
@@ -45,7 +45,7 @@ export const createFiscalClient = (req, res) => {
 export const updateFiscalClient = (req, res) => {
     const { id } = req.params;
     const employee = req.body;
-    employeeServices.updateFiscalClient(id, employee)
+    fiscalClientServices.updateFiscalClient(id, employee)
         .then(() => {
             res.status(200).json({
                 message: "FiscalClient updated successfully",
@@ -59,7 +59,7 @@ export const updateFiscalClient = (req, res) => {
 //Delete Fiscal Client Method
 export const deleteFiscalClient = (req, res) => {
     const { id } = req.params;
-    employeeServices.deleteFiscalClient(id)
+    fiscalClientServices.deleteFiscalClient(id)
         .then(() => {
             res.status(200).json({
                 message: "FiscalClient deleted successfully",
