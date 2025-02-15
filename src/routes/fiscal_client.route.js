@@ -5,8 +5,8 @@ const fiscalClientRouter = Router()
 
 fiscalClientRouter.get("/", getFiscalClients);
 fiscalClientRouter.get("/:id", getFiscalClient);
-fiscalClientRouter.get("/",createFiscalClient);
-fiscalClientRouter.get("/:id", updateFiscalClient);
-fiscalClientRouter.get("/:id", deleteFiscalClient);
+fiscalClientRouter.post("/",createFiscalClient);
+fiscalClientRouter.put("/:id", updateFiscalClient);
+fiscalClientRouter.delete("/:id", deleteFiscalClient);
 
 export default fiscalClientRouter;
