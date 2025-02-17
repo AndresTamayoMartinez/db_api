@@ -36,7 +36,7 @@ export const updateFiscalClient = (id, fiscalClient) => {
     return new Promise((resolve, reject) => {
         const query = "UPDATE cliente_fiscal SET id_cliente = ?, rfc = ?, regimen_fiscal = ?, codigo_postal = ?, uso_cfdi = ? WHERE id = ?";
         const {idClient, rfc, fiscalRegimen, postalCode, cfdiUse} = fiscalClient;
-        db.execute(query, [idClient, rfc, fiscalRegimen, postalCode, cfdiUse])
+        db.execute(query, [idClient, rfc, fiscalRegimen, postalCode, cfdiUse, id])
             .then((result) => resolve(result))
             .catch((err) => reject(err));
     });

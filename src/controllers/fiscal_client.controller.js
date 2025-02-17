@@ -29,12 +29,12 @@ export const getFiscalClient = (req, res) => {
 
 //Create Fiscal Client Method
 export const createFiscalClient = (req, res) => {
-    const employee = req.body;
-    fiscalClientServices.createFiscalClient(employee)
+    const fiscalClient = req.body;
+    fiscalClientServices.createFiscalClient(fiscalClient)
         .then(() => {
             res.status(200).json({
                 message: "FiscalClient created successfully",
-                data: employee,
+                data: fiscalClient,
             })
         }).catch((err) => {
             res.status(500).send(err)
@@ -44,12 +44,12 @@ export const createFiscalClient = (req, res) => {
 //Update Fiscal Client Method
 export const updateFiscalClient = (req, res) => {
     const { id } = req.params;
-    const employee = req.body;
-    fiscalClientServices.updateFiscalClient(id, employee)
+    const fiscalClient = req.body;
+    fiscalClientServices.updateFiscalClient(id, fiscalClient)
         .then(() => {
             res.status(200).json({
                 message: "FiscalClient updated successfully",
-                data: employee,
+                data: fiscalClient,
             })
         }).catch((err) => {
             res.status(500).send(err)
