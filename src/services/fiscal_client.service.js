@@ -3,7 +3,7 @@ import db from "../config/db.js";
 //Get Fiscal Clients Method
 export const getFiscalClients = () => {
     return new Promise((resolve, reject) => {
-        const query = "SELECT * FROM cliente_fiscal";
+        const query = "SELECT cf.id, cf.id_cliente, c.nombre, cf.rfc, cf.regimen_fiscal, cf.codigo_postal, cf.uso_cfdi FROM cliente_fiscal AS cf JOIN cliente AS c ON c.id = cf.id_cliente";
         db.execute(query)
             .then((result) => resolve(result))
             .catch((err) => reject(err));
