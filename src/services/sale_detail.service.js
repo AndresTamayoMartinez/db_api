@@ -3,7 +3,7 @@ import db from "../config/db.js";
 //Get SaleDetails Method
 export const getSaleDetails = (id_sale) => {
     return new Promise((resolve, reject) => {
-        const query = `SELECT dv.id_producto, p.nombre as nombre_producto, pr.nomrbe as nombre_presentacion, dv.cantidad, dv.precio, dv.subtotal, dv.entregado 
+        const query = `SELECT dv.id_producto, p.nombre as nombre_producto, pr.nomrbe as nombre_presentacion, dv.cantidad, dv.precio, dv.subtotal, dv.entregado, pr.codigo_sat 
                         FROM detalle_v as dv
                         inner join producto as p on p.id = dv.id_producto
                         inner join presentacion as pr on pr.id = dv.id_presentacion
