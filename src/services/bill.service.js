@@ -13,7 +13,7 @@ export const getBills = () => {
 //Get Employee Method
 export const getBill = (id) => {
     return new Promise((resolve, reject) => {
-        const query = "SELECT cf.rfc, c.nombre, cf.uso_cfdi FROM venta as v JOIN cliente as c on v.id_cliente = c.id JOIN cliente_fiscal as cf on cf.id_cliente = c.id WHERE v.id = ?";
+        const query = "SELECT cf.rfc, c.nombre, cf.uso_cfdi, cf.regimen_fiscal, cf.codigo_postal FROM venta as v JOIN cliente as c on v.id_cliente = c.id JOIN cliente_fiscal as cf on cf.id_cliente = c.id WHERE v.id = ?";
         db.execute(query, [id])
             .then((result) => resolve(result))
             .catch((err) => reject(err));
