@@ -9,6 +9,7 @@ import providerRouter from "./provider.route.js";
 import categoryRouter from "./category.route.js";
 import employeeRouter from "./employee.route.js";
 import entranceRouter from "./entrances.route.js";
+import facturamaRouter from "./facturama.route.js";
 import saleDetailRouter from "./sale_detail.route.js";
 import billDetailRouter from "./bill_detail.route.js";
 import presentationRouter from "./presentation.route.js";
@@ -59,6 +60,8 @@ indexRouter.use(`${prefix}/bill`, validateToken, billRouter);
 //Fiscal_Client Route
 indexRouter.use(`${prefix}/fiscal_client`, validateToken, fiscalClientRouter);
 //Bill_Detail Route
-indexRouter.use(`${prefix}/bill_detail`, validateToken, billDetailRouter)
+indexRouter.use(`${prefix}/bill_detail`, validateToken, billDetailRouter);
+//Facturama Route
+indexRouter.use(`${prefix}/facturama`, validateToken, facturamaRouter);
 
 export default indexRouter;
