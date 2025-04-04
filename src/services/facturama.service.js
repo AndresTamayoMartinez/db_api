@@ -1,25 +1,27 @@
-const fetch = require('node-fetch');
+import fetch from 'node-fetch';
 
-const FACTURAMA_API_URL = 'https://apisandbox.facturama.mx/';
+const FACTURAMA_API_URL = 'https://apisandbox.facturama.mx';
 const AUTH_HEADER = 'Basic Q2FybG9zRGFuaWVsVGFtYXlvOk1hcnRpbmV6NTY=';
 
+const getRequest = {
+    method: 'GET',
+    headers: {
+        'Content-type': 'application/json',
+        'authorization': 'Basic Q2FybG9zRGFuaWVsdGFtYXlvOk1vcmFsZXM1Ng=='
+    },
+    redirect: "follow"
+}
+
 export const getPaymentsForms = async () => {
-    try{
-        const response = await fetch(FACTURAMA_API_URL + 'Catalogs/PaymentForms', {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': AUTH_HEADER
+    return new Promise((resolve, reject) => {
+        fetch(`${FACTURAMA_API_URL}/Catalogs/PaymentForms`, getRequest)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`Error en Facturama: ${response.status} - ${response.statusText}`);
             }
-        });
-
-        if (!response.ok) {
-            throw new Error(`Error en Facturama: ${response.statusText}`);
-        }
-
-        return await response.json();
-    } catch (error) {
-        console.error('Error obteniendo las formas de pago:', error.message);
-        throw error;
-    }
+            return response.json();
+        })
+        .then(data => resolve(data))
+        .catch(err => reject(err));
+    });
 };
