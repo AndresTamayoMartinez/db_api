@@ -10,10 +10,22 @@ export const getBills = () => {
     });
 };
 
-//Get Employee Method
+//Get Bill Method
 export const getBill = (id) => {
     return new Promise((resolve, reject) => {
-        const query = "SELECT cf.rfc, c.nombre, cf.uso_cfdi, cf.regimen_fiscal, cf.codigo_postal FROM venta as v JOIN cliente as c on v.id_cliente = c.id JOIN cliente_fiscal as cf on cf.id_cliente = c.id WHERE v.id = ?";
+        const query = `
+            SELECT 
+                COALESCE(cf.rfc, cf_pg.rfc) AS rfc,
+                IF(cf.id_cliente IS NULL, 'PUBLICO EN GENERAL', c.nombre) AS nombre,
+                COALESCE(cf.uso_cfdi, cf_pg.uso_cfdi) AS uso_cfdi,
+                COALESCE(cf.regimen_fiscal, cf_pg.regimen_fiscal) AS regimen_fiscal,
+                COALESCE(cf.codigo_postal, cf_pg.codigo_postal) AS codigo_postal
+            FROM venta AS v
+            JOIN cliente AS c ON v.id_cliente = c.id
+            LEFT JOIN cliente_fiscal AS cf ON cf.id_cliente = c.id
+            LEFT JOIN cliente_fiscal AS cf_pg ON cf_pg.id_cliente = 71
+            WHERE v.id = ?;
+        `;
         db.execute(query, [id])
             .then((result) => resolve(result))
             .catch((err) => reject(err));
